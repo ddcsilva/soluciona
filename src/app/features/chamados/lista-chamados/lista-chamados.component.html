@@ -1,7 +1,14 @@
 <div class="container-chamados">
   <h2>Lista de Chamados</h2>
   <div class="table-wrapper">
-    <button mat-raised-button color="primary" class="botao-novo-chamado">Novo Chamado</button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="botao-novo-chamado"
+      (click)="abrirFormulario()"
+    >
+      Novo Chamado
+    </button>
     <table mat-table [dataSource]="chamados" class="mat-elevation-z8">
       <!-- ID -->
       <ng-container matColumnDef="id">
@@ -51,5 +58,37 @@
       <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
       <tr mat-row *matRowDef="let chamado; columns: colunasExibidas"></tr>
     </table>
+
+    <div *ngIf="mostrarFormulario" class="formulario-chamado">
+      <form [formGroup]="formularioChamado" (ngSubmit)="salvarChamado()">
+        <mat-form-field appearance="fill" class="form-field-chamado">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="titulo" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field-chamado">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="descricao" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field-chamado">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="Aberto">Aberto</mat-option>
+            <mat-option value="Fechado">Fechado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="formularioChamado.invalid"
+        >
+          Salvar
+        </button>
+        <button mat-button type="button" (click)="fecharFormulario()">Cancelar</button>
+      </form>
+    </div>
   </div>
 </div>
