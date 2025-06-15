@@ -1,6 +1,7 @@
 <div class="container-chamados">
   <h2>Lista de Chamados</h2>
   <div class="table-wrapper">
+    <button mat-raised-button color="primary" class="botao-novo-chamado">Novo Chamado</button>
     <table mat-table [dataSource]="chamados" class="mat-elevation-z8">
       <!-- ID -->
       <ng-container matColumnDef="id">
@@ -31,6 +32,19 @@
             }"
             >{{ chamado.status }}</span
           >
+        </td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let chamado">
+          <button mat-icon-button color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
       </ng-container>
 
