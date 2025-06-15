@@ -1,0 +1,27 @@
+.container-chamados {
+  max-width: 800px;
+  margin: 32px auto 0 auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0002;
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.status-aberto {
+  color: #388e3c;
+  font-weight: bold;
+}
+
+.status-fechado {
+  color: #d32f2f;
+  font-weight: bold;
+}
